@@ -65,9 +65,9 @@
     ]
 	},
 	"zwave": {
-		"manufacturerId": 411,
+		"manufacturerId": 564,
 		"productTypeId": 3,
-		"productId": 522,
+		"productId": 273,
 		"productDocumentation": "",
 		"pid": 3065,
 		"imageRemotePath": "",
