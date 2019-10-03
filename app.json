@@ -2,11 +2,11 @@
   "id": "no.thermofloor",
   "sdk": 2,
   "name": {
-    "en": "Thermo-Floor / Heatit"
+    "en": "Heatit Z-wave"
   },
-  "brandColor": "#d52229",
-  "version": "2.1.1",
-  "compatibility": ">=1.5.0",
+  "brandColor": "#cc3333",
+  "version": "2.4.0",
+  "compatibility": ">=2.4.0",
   "homeyCommunityTopicId": 166,
   "author": {
     "name": "Ted Tolboom",
@@ -43,6 +43,7 @@
       "Heatit",
       "Heat it",
       "Magnum",
+      "Thermo-Floor",
       "underfloor heating"
     ],
     "nl": [
@@ -57,19 +58,181 @@
       "Multireg",
       "Heatit",
       "Heat it",
-      "Magnum"
+      "Magnum",
+      "Thermo-Floor"
     ]
   },
   "description": {
-    "en": "Drivers for Thermo-Floor AS devices",
-    "nl": "Drivers voor Thermo-Floor AS apparaten"
+    "en": "Drivers for Heatit Z-wave devices",
+    "nl": "Drivers voor Heatit Z-wave apparaten"
   },
   "images": {
-    "large": "/assets/images/large.jpg",
-    "small": "/assets/images/small.jpg"
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
   },
   "flow": {
     "triggers": [
+      {
+        "id": "measure_temperature.external_changed",
+        "title": {
+          "en": "The temperature of the external sensor changed",
+          "nl": "De temperatuur van de externe sensor is veranderd",
+          "de": "Temperatur des externen Sensors hat sich geändert"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TF_Thermostat_FW1.92|Z-TRM2fx"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_temperature.external",
+            "title": "temperature",
+            "type": "number",
+            "example": 23.5
+          }
+        ]
+      },
+      {
+        "id": "measure_temperature.floor_changed",
+        "title": {
+          "en": "The floor temperature changed",
+          "nl": "De vloertemperatuur is veranderd",
+          "de": "Die Fußbodentemperatur hat sich geändert"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TF_Thermostat_FW1.92|Z-TRM2fx"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_temperature.floor",
+            "title": "temperature",
+            "type": "number",
+            "example": 23.5
+          }
+        ]
+      },
+      {
+        "id": "measure_temperature.input1_changed",
+        "title": {
+          "en": "The temperature of the input 1 sensor changed",
+          "nl": "De temperatuur van de ingang 1 sensor is veranderd",
+          "de": "Temperatur des Eingang 1 Sensors hat sich geändert"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=Z-Water|Z-Relay"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_temperature.input1",
+            "title": "temperature",
+            "type": "number",
+            "example": 23.5
+          }
+        ]
+      },
+      {
+        "id": "measure_temperature.input2_changed",
+        "title": {
+          "en": "The temperature of the input 2 sensor changed",
+          "nl": "De temperatuur van de ingang 2 sensor is veranderd",
+          "de": "Temperatur des Eingang 2 Sensors hat sich geändert"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=Z-Water|Z-Relay"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_temperature.input2",
+            "title": "temperature",
+            "type": "number",
+            "example": 23.5
+          }
+        ]
+      },
+      {
+        "id": "measure_temperature.input3_changed",
+        "title": {
+          "en": "The temperature of the input 3 sensor changed",
+          "nl": "De temperatuur van de ingang 3 sensor is veranderd",
+          "de": "Temperatur des Eingang 3 Sensors hat sich geändert"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=Z-Water"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_temperature.input3",
+            "title": "temperature",
+            "type": "number",
+            "example": 23.5
+          }
+        ]
+      },
+      {
+        "id": "measure_temperature.input4_changed",
+        "title": {
+          "en": "The temperature of the input 4 sensor changed",
+          "nl": "De temperatuur van de ingang 4 sensor is veranderd",
+          "de": "Temperatur des Eingang 4 Sensors hat sich geändert"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=Z-Water"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_temperature.input4",
+            "title": "temperature",
+            "type": "number",
+            "example": 23.5
+          }
+        ]
+      },
+      {
+        "id": "measure_temperature.internal_changed",
+        "title": {
+          "en": "The temperature of the internal sensor changed",
+          "nl": "De temperatuur van de interne sensor is veranderd",
+          "de": "Temperatur des internen Sensors hat sich geändert"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=TF_Thermostat_FW1.92"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "measure_temperature.internal",
+            "title": "temperature",
+            "type": "number",
+            "example": 23.5
+          }
+        ]
+      },
       {
         "id": "thermofloor_mode_changed",
         "title": {
@@ -180,6 +343,59 @@
             "name": "device",
             "type": "device",
             "filter": "driver_id=TF_Thermostat|TF_Thermostat_FW1.92|Z-TRM2fx"
+          }
+        ]
+      },
+      {
+        "id": "Z-dim_button",
+        "title": {
+          "en": "A button has been pressed",
+          "nl": "Een knop is ingedrukt"
+        },
+        "hint": {
+          "en": "This card will trigger on any button pressed and provides the scene tokens.",
+          "nl": "Deze kaart wordt geactiveerd bij iedere knop die ingedrukt wordt en biedt de scene tokens aan."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=Z-Dim"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "scene",
+            "type": "string",
+            "title": {
+              "en": "scene",
+              "nl": "scene"
+            },
+            "example": {
+              "en": "Button pressed (test)"
+            }
+          }
+        ]
+      },
+      {
+        "id": "Z-dim_scene",
+        "title": {
+          "en": "A scene has been activated",
+          "nl": "Een scene is geactiveerd"
+        },
+        "hint": {
+          "en": "This card will only get triggered if the scene matches the state of the dropdown fields.",
+          "nl": "Deze kaart wordt alleen geactiveerd wanneer de scene overeenkomt met de toestand van de gekozen opties."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=Z-Dim"
+          },
+          {
+            "name": "scene",
+            "type": "autocomplete"
           }
         ]
       },
@@ -431,7 +647,7 @@
     {
       "id": "TF_Thermostat",
       "name": {
-        "en": "Thermo-Floor Z-wave thermostat (Multireg / Heatit / Magnum)"
+        "en": "Z-wave thermostat"
       },
       "icon": "/drivers/TF_Thermostat/assets/icon.svg",
       "images": {
@@ -460,50 +676,6 @@
             "en": "Idle"
           }
         }
-      },
-      "mobile": {
-        "components": [
-          {
-            "id": "icon",
-            "capabilities": []
-          },
-          {
-            "id": "sensor",
-            "capabilities": [
-              "measure_temperature",
-              "thermofloor_onoff"
-            ],
-            "options": {
-              "icons": {
-                "thermofloor_onoff": "/drivers/TF_Thermostat/assets/thermofloor_onoff.svg"
-              },
-              "thermofloor_onoff": {
-                "noblink": false,
-                "greyout": true,
-                "label": {
-                  "true": {
-                    "en": "Active"
-                  },
-                  "false": {
-                    "en": "Idle"
-                  }
-                }
-              }
-            }
-          },
-          {
-            "id": "picker",
-            "capabilities": [
-              "thermofloor_mode"
-            ]
-          },
-          {
-            "id": "thermostat",
-            "capabilities": [
-              "target_temperature"
-            ]
-          }
-        ]
       },
       "zwave": {
         "manufacturerId": 411,
@@ -979,7 +1151,7 @@
     {
       "id": "TF_Thermostat_FW1.92",
       "name": {
-        "en": "Thermo-Floor / Heatit Z-wave thermostat (FW 1.92)"
+        "en": "Z-wave thermostat (FW 1.92)"
       },
       "icon": "/drivers/TF_Thermostat_FW1.92/assets/icon.svg",
       "images": {
@@ -1024,53 +1196,6 @@
           "title": "floor temperature"
         }
       },
-      "mobile": {
-        "components": [
-          {
-            "id": "icon",
-            "capabilities": []
-          },
-          {
-            "id": "sensor",
-            "capabilities": [
-              "measure_temperature",
-              "measure_temperature.floor",
-              "measure_temperature.internal",
-              "measure_temperature.external",
-              "thermofloor_onoff"
-            ],
-            "options": {
-              "icons": {
-                "thermofloor_onoff": "/drivers/TF_Thermostat_FW1.92/assets/thermofloor_onoff.svg"
-              },
-              "thermofloor_onoff": {
-                "noblink": false,
-                "greyout": true,
-                "label": {
-                  "true": {
-                    "en": "Active"
-                  },
-                  "false": {
-                    "en": "Idle"
-                  }
-                }
-              }
-            }
-          },
-          {
-            "id": "picker",
-            "capabilities": [
-              "thermofloor_mode"
-            ]
-          },
-          {
-            "id": "thermostat",
-            "capabilities": [
-              "target_temperature"
-            ]
-          }
-        ]
-      },
       "zwave": {
         "manufacturerId": 411,
         "productTypeId": 3,
@@ -1094,7 +1219,9 @@
         },
         "associationGroups": [
           1,
-          2,
+          2
+        ],
+        "associationGroupsMultiChannel": [
           3,
           4,
           5
@@ -1110,6 +1237,24 @@
             "hint": {
               "en": "On/off  control: This controls external heaters replicating the state of the internal relay. \nUses BASIC_SET command, values 0x00 (on) and 0xFF (on).\nDefault: 1 (Homey's ID), required to track the thermostat state (Active / Idle)",
               "nl": "On/off  control: Deze groep schakelt externe verwarmings of koelings elementen. \nMaakt gebruik van het BASIC_SET command, values 0x00 (on) and 0xFF (on).\nStandaard: 1 (Homey's ID), nodig om de toestand van de thermostat (Actief / Inactief) bij te houden"
+            }
+          },
+          "3": {
+            "hint": {
+              "en": "Send Multilevel Sensor Reports for the internal temperature sensor. \nDefault: 1 (Homey's ID), required to track the thermostat state (Active / Idle)",
+              "nl": "Stuurt Multilevel Sensor Reports voor de internal temperatuursensor.\nStandaard: 1 (Homey's ID), nodig om de toestand van de thermostat (Actief / Inactief) bij te houden"
+            }
+          },
+          "4": {
+            "hint": {
+              "en": "Send Multilevel Sensor Reports for the external temperature sensor. \nDefault: 1 (Homey's ID), required to track the thermostat state (Active / Idle)",
+              "nl": "Stuurt Multilevel Sensor Reports voor de externe ruimte temperatuursensor.\nStandaard: 1 (Homey's ID), nodig om de toestand van de thermostat (Actief / Inactief) bij te houden"
+            }
+          },
+          "5": {
+            "hint": {
+              "en": "Send Multilevel Sensor Reports for the floor temperature sensor. \nDefault: 1 (Homey's ID), required to track the thermostat state (Active / Idle)",
+              "nl": "Stuurt Multilevel Sensor Reports voor de vloer temperatuursensor.\nStandaard: 1 (Homey's ID), nodig om de toestand van de thermostat (Actief / Inactief) bij te houden"
             }
           }
         }
@@ -1233,6 +1378,42 @@
           },
           "collapsed": true,
           "children": [
+            {
+              "id": "Temperature_thermostat",
+              "type": "dropdown",
+              "label": {
+                "en": "Displayed temperature",
+                "nl": "Getoonde temperatuur"
+              },
+              "value": "floor",
+              "hint": {
+                "en": "Displayed temperature in Homey's thermostat \ndefault: Floor sensor",
+                "nl": "Getoonde termperatuur in Homey's thermostaat \nstandaard: Vloer sensor"
+              },
+              "values": [
+                {
+                  "id": "floor",
+                  "label": {
+                    "en": "Floor sensor (default)",
+                    "nl": "Vloer sensor (standaard)"
+                  }
+                },
+                {
+                  "id": "external",
+                  "label": {
+                    "en": "External sensor",
+                    "nl": "Externe sensor"
+                  }
+                },
+                {
+                  "id": "internal",
+                  "label": {
+                    "en": "Internal sensor",
+                    "nl": "Interne sensor"
+                  }
+                }
+              ]
+            },
             {
               "id": "Sensor_mode",
               "zwave": {
@@ -1546,197 +1727,1753 @@
       ]
     },
     {
-      "id": "Z-push-button-2",
+      "id": "Z-DIN-616",
       "name": {
-        "en": "Heatit Z-Push Button 2"
+        "en": "Z-DIN-616"
       },
-      "icon": "/drivers/Z-push-button-2/assets/icon.svg",
+      "icon": "/drivers/Z-DIN-616/assets/icon-1.svg",
       "images": {
-        "large": "/drivers/Z-push-button-2/assets/images/large.png",
-        "small": "/drivers/Z-push-button-2/assets/images/small.png"
+        "large": "/drivers/Z-DIN-616/assets/images/large.png",
+        "small": "/drivers/Z-DIN-616/assets/images/small.png"
       },
-      "class": "sensor",
+      "class": "socket",
       "capabilities": [
-        "measure_battery",
-        "alarm_battery"
+        "onoff",
+        "scene_notification_custom_capability"
       ],
-      "mobile": {
-        "components": [
-          {
-            "id": "icon"
-          },
-          {
-            "id": "battery",
-            "capabilities": [
-              "measure_battery"
-            ],
-            "options": {
-              "showTitle": true
-            }
+      "capabilitiesOptions": {
+        "onoff": {
+          "title": {
+            "en": "Relay 1"
           }
-        ]
+        }
       },
       "zwave": {
-        "manufacturerId": 411,
-        "productTypeId": 768,
-        "productId": 41735,
+        "manufacturerId": 564,
+        "productTypeId": 3,
+        "productId": 274,
         "productDocumentation": "",
-        "pid": 9999,
+        "pid": 3065,
         "imageRemotePath": "",
         "learnmode": {
-          "image": "/drivers/Z-push-button-2/assets/learnmode.svg",
+          "image": "/drivers/Z-DIN-616/assets/learnmode.svg",
           "instruction": {
-            "en": "To include the Z-Push Button to Homey: \nPress and hold down both buttons I and O of Group 2 (upper rockers) over 3 seconds. \nThe LED indicator will turn on and the remote will be set to adding mode. \nThe LED indicator blinking 6 times will indicate successful inclusion.",
-            "nl": "Om de Z-Push Button aan Homey toe te voegen: \n1. Hou beide knoppen I en O van Groep 2 (bovenste knoppen) ingedrukt voor 3 seconden. \nDe LED indicator gaat aan en de Z-push button is in toevoegmodus gezet. \nDe LED indicator knippert 6 keer wanneer het toevoegen succesvol is."
+            "en": "To include the Z-DIN 616 module to Homey: \n1. Click the small button through the little hole, marked with the text “INCLUSION”, in front of the Heatit Z-Water regulator. \n2. The Adding Mode is indicated by Heatit Z-Water status LED is blinking until a timeout occurs after 10 seconds or if the module has been added to the Z-Wave network."
           }
         },
         "unlearnmode": {
-          "image": "/drivers/Z-push-button-2/assets/learnmode.svg",
+          "image": "/drivers/Z-DIN-616/assets/learnmode.svg",
           "instruction": {
-            "en": "To remove the Z-Push Button to Homey: \nPress and hold down both buttons I and O of Group 2 (upper rockers) over 3 seconds. \nThe LED indicator will turn on and the remote will be set to adding mode. \nThe LED indicator blinking 4 times will indicate successful inclusion.",
-            "nl": "Om de Z-Push Button van Homey te verwijderen: \n1. Hou beide knoppen I en O van Groep 2 (bovenste knoppen) ingedrukt voor 3 seconden. \nDe LED indicator gaat aan en de Z-push button is in toevoegmodus gezet. \nDe LED indicator knippert 4 keer wanneer het toevoegen succesvol is."
+            "en": "To remove the Z-DIN 616 module to Homey: \n1. Click the small button through the little hole, marked with the text “INCLUSION”, in front of the Heatit Z-Water regulator. \n2. The Removing Mode is indicated by Heatit Z-Water status LED is blinking until a timeout occurs after 10 seconds or if the module has been removed from the Z-Wave network."
           }
         },
         "associationGroups": [
           1
         ],
-        "associationGroupsOptions": {
-          "1": {
-            "hint": {
-              "en": "Lifeline. Scene Notification and battery reporting is addressed to this group. Only one node can be assigned to this association group. \nDefault: 1 (Homey's ID)",
-              "nl": "Lifeline: Association Groep 1 wordt gebruikt om alle rapportages door te geven. Slechts een node kan toegevoegd worden aan deze associatie groep. \nStandaard: 1 (Homey's ID)"
-            }
-          },
-          "2": {
-            "hint": {
-              "en": "Group 2: Adding other Z-wave devices to this group will enable direct control from Z-push-button to that device:\nShort press: on/off (BASIC_SET) command \nLong press: increase / decrease dim-level command (SWITCH_MULTILEVEL).",
-              "nl": "Groep 2: Het toevoegen van andere Z-wave devices aan deze groep zal directe controle van de Z-push-button over deze devices toevoegen:\nKort ingedrukt: on/off (BASIC_SET) commando\nLang ingedrukt: verhoog / verlaag dim-level commando (SWITCH_MULTILEVEL)."
-            }
-          }
-        }
-      },
-      "settings": [
-        {
-          "id": "Wake-up_notification",
-          "value": "Wake up Z-push before save",
-          "type": "label",
-          "label": {
-            "en": "Note:"
-          },
-          "hint": {
-            "en": "Short press a button to wake-up the Z-push for 3 seconds, then press and hold I and O together over one second to wake-up the wall switch for 7 seconds.\nThen press save.",
-            "nl": "Druk kort op een knop om de Z-push te activeren, houdt daarna I en O tegelijkertijd ingedrukt om de Z-push voor 7 seconden wakker te houden.\nDruk daarna op save."
-          }
-        }
-      ]
-    },
-    {
-      "id": "Z-push-button-8",
-      "name": {
-        "en": "Heatit Z-Push Button 8"
-      },
-      "icon": "/drivers/Z-push-button-8/assets/icon.svg",
-      "images": {
-        "large": "/drivers/Z-push-button-8/assets/images/large.png",
-        "small": "/drivers/Z-push-button-8/assets/images/small.png"
-      },
-      "class": "sensor",
-      "capabilities": [
-        "measure_battery",
-        "alarm_battery"
-      ],
-      "mobile": {
-        "components": [
-          {
-            "id": "icon"
-          },
-          {
-            "id": "battery",
-            "capabilities": [
-              "measure_battery"
-            ],
-            "options": {
-              "showTitle": true
-            }
-          }
-        ]
-      },
-      "zwave": {
-        "manufacturerId": 411,
-        "productTypeId": 768,
-        "productId": 41733,
-        "productDocumentation": "",
-        "pid": 9999,
-        "imageRemotePath": "",
-        "learnmode": {
-          "image": "/drivers/Z-push-button-8/assets/learnmode.svg",
-          "instruction": {
-            "en": "To include the Z-Push Button to Homey: \nPress and hold down both buttons I and O of Group 2 (upper rockers) over 3 seconds. \nThe LED indicator will turn on and the remote will be set to adding mode. \nThe LED indicator blinking 6 times will indicate successful inclusion.",
-            "nl": "Om de Z-Push Button aan Homey toe te voegen: \n1. Hou beide knoppen I en O van Groep 2 (bovenste knoppen) ingedrukt voor 3 seconden. \nDe LED indicator gaat aan en de Z-push button is in toevoegmodus gezet. \nDe LED indicator knippert 6 keer wanneer het toevoegen succesvol is."
-          }
-        },
-        "unlearnmode": {
-          "image": "/drivers/Z-push-button-8/assets/learnmode.svg",
-          "instruction": {
-            "en": "To remove the Z-Push Button to Homey: \nPress and hold down both buttons I and O of Group 2 (upper rockers) over 3 seconds. \nThe LED indicator will turn on and the remote will be set to adding mode. \nThe LED indicator blinking 4 times will indicate successful inclusion.",
-            "nl": "Om de Z-Push Button van Homey te verwijderen: \n1. Hou beide knoppen I en O van Groep 2 (bovenste knoppen) ingedrukt voor 3 seconden. \nDe LED indicator gaat aan en de Z-push button is in toevoegmodus gezet. \nDe LED indicator knippert 4 keer wanneer het toevoegen succesvol is."
-          }
-        },
-        "associationGroups": [
-          1
+        "associationGroupsMultiChannel": [
+          2,
+          5,
+          8,
+          11,
+          14,
+          17
         ],
         "associationGroupsOptions": {
           "1": {
             "hint": {
-              "en": "Lifeline. Scene Notification and battery reporting is addressed to this group. Only one node can be assigned to this association group. \nDefault: 1 (Homey's ID)",
-              "nl": "Lifeline: Association Groep 1 wordt gebruikt om alle rapportages door te geven. Slechts een node kan toegevoegd worden aan deze associatie groep. \nStandaard: 1 (Homey's ID)"
+              "en": "Lifeline. Sends Device Reset notifications and Basic Report On / Off when relay output 1 is activated."
             }
           },
           "2": {
             "hint": {
-              "en": "Group 2 (upper rockers): Adding other Z-wave devices to this group will enable direct control from Z-push-button to that device:\nShort press: on/off (BASIC_SET) command \nLong press: increase / decrease dim-level command (SWITCH_MULTILEVEL).",
-              "nl": "Groep 2 (bovenste knoppen): Het toevoegen van andere Z-wave devices aan deze groep zal directe controle van de Z-push-button over deze devices toevoegen:\nKort ingedrukt: on/off (BASIC_SET) commando\nLang ingedrukt: verhoog / verlaag dim-level commando (SWITCH_MULTILEVEL)."
+              "en": "Sends Basic Set On / Off when input 1 is activated. For example, used to control relay modules or for visualization in the central controller unit."
             }
           },
           "3": {
             "hint": {
-              "en": "Group 3: Adding other Z-wave devices to this group will enable direct control from Z-push-button to that device:\nShort press: on/off (BASIC_SET) command \nLong press: increase / decrease dim-level command (SWITCH_MULTILEVEL).",
-              "nl": "Groep 3: Het toevoegen van andere Z-wave devices aan deze groep zal directe controle van de Z-push-button over deze devices toevoegen:\nKort ingedrukt: on/off (BASIC_SET) commando\nLang ingedrukt: verhoog / verlaag dim-level commando (SWITCH_MULTILEVEL)."
+              "en": "Sends Binary Switch Set On / Off when input 1 is activated. For example, used to control relay modules."
             }
           },
           "4": {
             "hint": {
-              "en": "Group 4: Adding other Z-wave devices to this group will enable direct control from Z-push-button to that device:\nShort press: on/off (BASIC_SET) command \nLong press: increase / decrease dim-level command (SWITCH_MULTILEVEL).",
-              "nl": "Groep 4: Het toevoegen van andere Z-wave devices aan deze groep zal directe controle van de Z-push-button over deze devices toevoegen:\nKort ingedrukt: on/off (BASIC_SET) commando\nLang ingedrukt: verhoog / verlaag dim-level commando (SWITCH_MULTILEVEL)."
+              "en": "Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 1 is activated. Typically used to control dimmers, curtain controls, etc."
             }
           },
           "5": {
             "hint": {
-              "en": "Group 5 (bottom rockers): Adding other Z-wave devices to this group will enable direct control from Z-push-button to that device:\nShort press: on/off (BASIC_SET) command \nLong press: increase / decrease dim-level command (SWITCH_MULTILEVEL).",
-              "nl": "Groep 5 (onderste knoppen): Het toevoegen van andere Z-wave devices aan deze groep zal directe controle van de Z-push-button over deze devices toevoegen:\nKort ingedrukt: on/off (BASIC_SET) commando\nLang ingedrukt: verhoog / verlaag dim-level commando (SWITCH_MULTILEVEL)."
+              "en": "Sends Basic Set On / Off when input 2 is activated. For example, used to control relay modules or for visualization in the central controller unit."
+            }
+          },
+          "6": {
+            "hint": {
+              "en": "Sends Binary Switch Set On / Off when input 2 is activated. For example, used to control relay modules."
+            }
+          },
+          "7": {
+            "hint": {
+              "en": "Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 2 is activated. Typically used to control dimmers, curtain controls, etc."
+            }
+          },
+          "8": {
+            "hint": {
+              "en": "Sends Basic Set On / Off when input 3 is activated. For example, used to control relay modules or for visualization in the central controller unit."
+            }
+          },
+          "9": {
+            "hint": {
+              "en": "Sends Binary Switch Set On / Off when input 3 is activated. For example, used to control relay modules."
+            }
+          },
+          "10": {
+            "hint": {
+              "en": "Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 3 is activated. Typically used to control dimmers, curtain controls, etc."
+            }
+          },
+          "11": {
+            "hint": {
+              "en": "Sends Basic Set On / Off when input 4 is activated. For example, used to control relay modules or for visualization in the central controller unit."
+            }
+          },
+          "12": {
+            "hint": {
+              "en": "Sends Binary Switch Set On / Off when input 4 is activated. For example, used to control relay modules."
+            }
+          },
+          "13": {
+            "hint": {
+              "en": "Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 4 is activated. Typically used to control dimmers, curtain controls, etc."
+            }
+          },
+          "14": {
+            "hint": {
+              "en": "Sends Basic Set On / Off when input 5 is activated. For example, used to control relay modules or for visualization in the central controller unit."
+            }
+          },
+          "15": {
+            "hint": {
+              "en": "Sends Binary Switch Set On / Off when input 5 is activated. For example, used to control relay modules."
+            }
+          },
+          "16": {
+            "hint": {
+              "en": "Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 5 is activated. Typically used to control dimmers, curtain controls, etc."
+            }
+          },
+          "17": {
+            "hint": {
+              "en": "Sends Basic Set On / Off when input 6 is activated. For example, used to control relay modules or for visualization in the central controller unit."
+            }
+          },
+          "18": {
+            "hint": {
+              "en": "Sends Binary Switch Set On / Off when input 6 is activated. For example, used to control relay modules."
+            }
+          },
+          "19": {
+            "hint": {
+              "en": "Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 6 is activated. Typically used to control dimmers, curtain controls, etc."
+            }
+          }
+        },
+        "multiChannelNodes": {
+          "2": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "icon": "/drivers/Z-DIN-616/assets/icon-2.svg",
+            "name": {
+              "en": "Relay 2"
+            }
+          },
+          "3": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "icon": "/drivers/Z-DIN-616/assets/icon-3.svg",
+            "name": {
+              "en": "Relay 3"
+            }
+          },
+          "4": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "icon": "/drivers/Z-DIN-616/assets/icon-4.svg",
+            "name": {
+              "en": "Relay 4"
+            }
+          },
+          "5": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "icon": "/drivers/Z-DIN-616/assets/icon-5.svg",
+            "name": {
+              "en": "Relay 5"
+            }
+          },
+          "6": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "icon": "/drivers/Z-DIN-616/assets/icon-6.svg",
+            "name": {
+              "en": "Relay 6"
             }
           }
         }
       },
       "settings": [
         {
-          "id": "Wake-up_notification",
-          "value": "Wake up Z-push before save",
-          "type": "label",
+          "id": "LED_status",
+          "zwave": {
+            "index": 1,
+            "size": 1
+          },
+          "type": "dropdown",
           "label": {
-            "en": "Note:"
+            "en": "Status LED"
+          },
+          "value": "1",
+          "hint": {
+            "en": "Configuration of the status LED. \nZ-wave parameter 1 \ndefault: LED turned on",
+            "nl": "Instelling van de status LED. \nZ-wave parameter 1 \nstandaard: LED ingeschakeld"
+          },
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "LED turned off.",
+                "nl": "LED uitgeschakeld"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "LED turned on (default)",
+                "nl": "LED ingeschakeld (standaard)"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "LED flashing at 1 second intervals (1 Hz).",
+                "nl": "LED knippert in 1 seconde interval (1 Hz)."
+              }
+            },
+            {
+              "id": "3",
+              "label": {
+                "en": "LED flashing at 1/2 second intervals (1⁄2 Hz).",
+                "nl": "LED knippert in 1/2 seconde interval (1⁄2 Hz)."
+              }
+            }
+          ]
+        },
+        {
+          "id": "LED_brightness",
+          "zwave": {
+            "index": 2,
+            "size": 1
+          },
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 100
+          },
+          "value": 50,
+          "label": {
+            "en": "LED brightness (%)",
+            "nl": "Helderheid LED (%)"
           },
           "hint": {
-            "en": "Short press a button to wake-up the Z-push for 3 seconds, then press and hold I and O together over one second to wake-up the wall switch for 7 seconds.\nThen press save.",
-            "nl": "Druk kort op een knop om de Z-push te activeren, houdt daarna I en O tegelijkertijd ingedrukt om de Z-push voor 7 seconden wakker te houden.\nDruk daarna op save."
+            "en": "LED brightness. \nZ-wave parameter 2 \nRange: 0 - 100 (%)\nDefault: 50 (%)",
+            "nl": "Helderheid LED. \nZ-wave parameter 2 \nBereik: 0 - 100 (%)\nStandaard: 50 (%)"
           }
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Input settings",
+            "nl": "Ingangsinstellingen"
+          },
+          "collapsed": true,
+          "children": [
+            {
+              "id": "Input_function_input1",
+              "zwave": {
+                "index": 3,
+                "size": 1
+              },
+              "label": {
+                "en": "Function input 3",
+                "nl": "Functie ingang 1"
+              },
+              "type": "dropdown",
+              "value": "3",
+              "hint": {
+                "en": "Input function. \nZ-wave parameter 3 \ndefault: Mode 3, rising-edge controlled input.",
+                "nl": "Ingangsfunctie. \nZ-wave parameter 3 \nstandaard: Mode 3, rising-edge controlled input."
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Inactive",
+                    "nl": "Inactief"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Mode 1, level-controlled input."
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Mode 2, falling-edge controlled input."
+                  }
+                },
+                {
+                  "id": "3",
+                  "label": {
+                    "en": "Mode 3, rising-edge controlled input. (Default)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "Input_function_input2",
+              "zwave": {
+                "index": 4,
+                "size": 1
+              },
+              "label": {
+                "en": "Function input 3",
+                "nl": "Functie ingang 2"
+              },
+              "type": "dropdown",
+              "value": "3",
+              "hint": {
+                "en": "Input function. \nZ-wave parameter 3 \ndefault: Mode 3, rising-edge controlled input.",
+                "nl": "Ingangsfunctie. \nZ-wave parameter 3 \nstandaard: Mode 3, rising-edge controlled input."
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Inactive",
+                    "nl": "Inactief"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Mode 1, level-controlled input."
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Mode 2, falling-edge controlled input."
+                  }
+                },
+                {
+                  "id": "3",
+                  "label": {
+                    "en": "Mode 3, rising-edge controlled input. (Default)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "Input_function_input3",
+              "zwave": {
+                "index": 5,
+                "size": 1
+              },
+              "label": {
+                "en": "Function input 3",
+                "nl": "Functie ingang 3"
+              },
+              "type": "dropdown",
+              "value": "3",
+              "hint": {
+                "en": "Input function. \nZ-wave parameter 3 \ndefault: Mode 3, rising-edge controlled input.",
+                "nl": "Ingangsfunctie. \nZ-wave parameter 3 \nstandaard: Mode 3, rising-edge controlled input."
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Inactive",
+                    "nl": "Inactief"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Mode 1, level-controlled input."
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Mode 2, falling-edge controlled input."
+                  }
+                },
+                {
+                  "id": "3",
+                  "label": {
+                    "en": "Mode 3, rising-edge controlled input. (Default)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "Input_function_input4",
+              "zwave": {
+                "index": 6,
+                "size": 1
+              },
+              "label": {
+                "en": "Function input 4",
+                "nl": "Functie ingang 4"
+              },
+              "type": "dropdown",
+              "value": "3",
+              "hint": {
+                "en": "Input function. \nZ-wave parameter 3 \ndefault: Mode 3, rising-edge controlled input.",
+                "nl": "Ingangsfunctie. \nZ-wave parameter 3 \nstandaard: Mode 3, rising-edge controlled input."
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Inactive",
+                    "nl": "Inactief"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Mode 1, level-controlled input."
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Mode 2, falling-edge controlled input."
+                  }
+                },
+                {
+                  "id": "3",
+                  "label": {
+                    "en": "Mode 3, rising-edge controlled input. (Default)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "Input_function_input5",
+              "zwave": {
+                "index": 7,
+                "size": 1
+              },
+              "label": {
+                "en": "Function input 5",
+                "nl": "Functie ingang 5"
+              },
+              "type": "dropdown",
+              "value": "3",
+              "hint": {
+                "en": "Input function. \nZ-wave parameter 3 \ndefault: Mode 3, rising-edge controlled input.",
+                "nl": "Ingangsfunctie. \nZ-wave parameter 3 \nstandaard: Mode 3, rising-edge controlled input."
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Inactive",
+                    "nl": "Inactief"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Mode 1, level-controlled input."
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Mode 2, falling-edge controlled input."
+                  }
+                },
+                {
+                  "id": "3",
+                  "label": {
+                    "en": "Mode 3, rising-edge controlled input. (Default)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "Input_function_input6",
+              "zwave": {
+                "index": 8,
+                "size": 1
+              },
+              "label": {
+                "en": "Function input 6",
+                "nl": "Functie ingang 6"
+              },
+              "type": "dropdown",
+              "value": "3",
+              "hint": {
+                "en": "Input function. \nZ-wave parameter 3 \ndefault: Mode 3, rising-edge controlled input.",
+                "nl": "Ingangsfunctie. \nZ-wave parameter 3 \nstandaard: Mode 3, rising-edge controlled input."
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Inactive",
+                    "nl": "Inactief"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Mode 1, level-controlled input."
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Mode 2, falling-edge controlled input."
+                  }
+                },
+                {
+                  "id": "3",
+                  "label": {
+                    "en": "Mode 3, rising-edge controlled input. (Default)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "Input_Snubber_filter_time_constant",
+              "zwave": {
+                "index": 9,
+                "size": 1,
+                "signed": false
+              },
+              "type": "number",
+              "attr": {
+                "min": 0,
+                "max": 2.55
+              },
+              "value": 0.05,
+              "label": {
+                "en": "Input Snubber-filter time constant."
+              },
+              "hint": {
+                "en": "Input Snubber-filter time constant (s). \nSpecifies the time used to define the time constant of the input snubber-filter. (Increments in 0.01 second resolution.) \nZ-wave parameter 9 \nRange: 0 - 2.55"
+              }
+            },
+            {
+              "id": "Threshold_input_activation.",
+              "zwave": {
+                "index": 10,
+                "size": 1,
+                "signed": false
+              },
+              "type": "number",
+              "attr": {
+                "min": 0,
+                "max": 2.55
+              },
+              "value": 0.2,
+              "label": {
+                "en": "Threshold value for activation of inputs."
+              },
+              "hint": {
+                "en": "Threshold value for activation of inputs (s). \nSpecifies the time that an entry must be stable before it is accepted as active / idle in 0.01 second resolution. \nZ-wave parameter 10 \nRange: 0 - 2.55"
+              }
+            },
+            {
+              "id": "Threshold_input_latched_mode",
+              "zwave": {
+                "index": 11,
+                "size": 1,
+                "signed": false
+              },
+              "type": "number",
+              "attr": {
+                "min": 0,
+                "max": 2.55
+              },
+              "value": 0.5,
+              "label": {
+                "en": "Threshold for input in latched mode."
+              },
+              "hint": {
+                "en": "Threshold for input in latched mode. \nIndicates the time that an input must be activated before it accepts the button latched mode. (Increments in 0.01 second resolution.) \nZ-wave parameter 11 \nRange: 0 - 2.55"
+              }
+            },
+            {
+              "id": "Central_scene_mode",
+              "zwave": {
+                "index": 12,
+                "size": 1
+              },
+              "type": "dropdown",
+              "label": {
+                "en": "Deactivate Central Scene notifications.",
+                "nl": "Central Scene notificaties uitschakelen"
+              },
+              "value": "0",
+              "hint": {
+                "en": "Deactivate Central Scene notifications. \nZ-wave parameter 12 \ndefault: Notfications ingeschakeld.",
+                "nl": "Central Scene notificaties uitschakelen. \nZ-wave parameter 12 \nstandaard: Nofificaties ingeschakeld."
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Central Scene notifications enabled (default)",
+                    "nl": "Central Scene notificaties ingeschakeld (standaard)"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Central Scene notifications uitgeschakeld",
+                    "nl": "Central Scene notificaties uitgeschakeld"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Relay functions",
+            "nl": "Uitgangsinstellingen"
+          },
+          "collapsed": true,
+          "children": [
+            {
+              "id": "Output_function_relay1",
+              "zwave": {
+                "index": 13,
+                "size": 1
+              },
+              "label": {
+                "en": "Function relay 1",
+                "nl": "Functie uitgang 1"
+              },
+              "type": "dropdown",
+              "value": "1",
+              "hint": {
+                "en": "Relay function. \nZ-wave parameter 13 \ndefault: Output is controlled by input 2.",
+                "nl": "Uitgangsfunctie. \nZ-wave parameter 13 \nstandaard: Output is controlled by input 2."
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Output is controlled via Z-Wave messages."
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Output is controlled by input 2. (Default)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "Output_function_relay2",
+              "zwave": {
+                "index": 14,
+                "size": 1
+              },
+              "label": {
+                "en": "Function relay 2",
+                "nl": "Functie uitgang 2"
+              },
+              "type": "dropdown",
+              "value": "1",
+              "hint": {
+                "en": "Relay function. \nZ-wave parameter 13 \ndefault: Output is controlled by input 2.",
+                "nl": "Uitgangsfunctie. \nZ-wave parameter 13 \nstandaard: Output is controlled by input 2."
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Output is controlled via Z-Wave messages."
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Output is controlled by input 2. (Default)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "Output_function_relay3",
+              "zwave": {
+                "index": 15,
+                "size": 1
+              },
+              "label": {
+                "en": "Function relay 3",
+                "nl": "Functie uitgang 3"
+              },
+              "type": "dropdown",
+              "value": "1",
+              "hint": {
+                "en": "Relay function. \nZ-wave parameter 13 \ndefault: Output is controlled by input 2.",
+                "nl": "Uitgangsfunctie. \nZ-wave parameter 13 \nstandaard: Output is controlled by input 2."
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Output is controlled via Z-Wave messages."
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Output is controlled by input 2. (Default)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "Output_function_relay4",
+              "zwave": {
+                "index": 16,
+                "size": 1
+              },
+              "label": {
+                "en": "Function relay 4",
+                "nl": "Functie uitgang 4"
+              },
+              "type": "dropdown",
+              "value": "1",
+              "hint": {
+                "en": "Relay function. \nZ-wave parameter 13 \ndefault: Output is controlled by input 2.",
+                "nl": "Uitgangsfunctie. \nZ-wave parameter 13 \nstandaard: Output is controlled by input 2."
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Output is controlled via Z-Wave messages."
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Output is controlled by input 2. (Default)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "Output_function_relay5",
+              "zwave": {
+                "index": 17,
+                "size": 1
+              },
+              "label": {
+                "en": "Function relay 5",
+                "nl": "Functie uitgang 5"
+              },
+              "type": "dropdown",
+              "value": "1",
+              "hint": {
+                "en": "Relay function. \nZ-wave parameter 13 \ndefault: Output is controlled by input 2.",
+                "nl": "Uitgangsfunctie. \nZ-wave parameter 13 \nstandaard: Output is controlled by input 2."
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Output is controlled via Z-Wave messages."
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Output is controlled by input 2. (Default)"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "Output_function_relay6",
+              "zwave": {
+                "index": 18,
+                "size": 1
+              },
+              "label": {
+                "en": "Function relay 6",
+                "nl": "Functie uitgang 6"
+              },
+              "type": "dropdown",
+              "value": "1",
+              "hint": {
+                "en": "Relay function. \nZ-wave parameter 13 \ndefault: Output is controlled by input 2.",
+                "nl": "Uitgangsfunctie. \nZ-wave parameter 13 \nstandaard: Output is controlled by input 2."
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Output is controlled via Z-Wave messages."
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Output is controlled by input 2. (Default)"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Z-Dim",
+      "name": {
+        "en": "Z-Dim"
+      },
+      "class": "light",
+      "capabilities": [
+        "dim",
+        "onoff",
+        "meter_power",
+        "measure_power"
+      ],
+      "capabilitiesOptions": {
+        "onoff": {
+          "setOnDim": false
+        },
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "measure_power": {
+          "approximated": true
+        }
+      },
+      "icon": "/drivers/Z-Dim/assets/icon.svg",
+      "images": {
+        "large": "/drivers/Z-Dim/assets/images/large.png",
+        "small": "/drivers/Z-Dim/assets/images/small.png"
+      },
+      "zwave": {
+        "manufacturerId": 411,
+        "productTypeId": [
+          3
+        ],
+        "productId": [
+          8704
+        ],
+        "includeSecure": false,
+        "__comment": "Reverted back to non secure inclusion due to S2 security handshake issues",
+        "zwaveAllianceProductId": 3331,
+        "zwaveAllianceProductDocumentation": "https://products.z-wavealliance.org/ProductManual/File?folder=&filename=Manuals/3331/SR-ZV9040A-A%20Micro%20Smart%20Dimmer.pdf",
+        "learnmode": {
+          "image": "/drivers/Z-Dim/assets/learnmode.svg",
+          "instruction": {
+            "en": "To include the thermostat to Homey: \n1. press the main button on the dimmer 6 times in a rapid sequence.",
+            "nl": "Om de thermostaat aan Homey toe te voegen: \n1. druk de knop van de dimmer 6 keer in."
+          }
+        },
+        "unlearnmode": {
+          "image": "/drivers/Z-Dim/assets/learnmode.svg",
+          "instruction": {
+            "en": "To include the thermostat to Homey: \n1. press the main button on the dimmer 6 times in a rapid sequence.",
+            "nl": "Om de thermostaat aan Homey toe te voegen: \n1. druk de knop van de dimmer 6 keer in."
+          }
+        },
+        "associationGroups": [
+          1
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "Lifeline association group (do not change)",
+              "nl": "Lifeline association group (niet aanpassen)"
+            }
+          },
+          "2": {
+            "hint": {
+              "en": "Dimming level: Basic Set is usually used to controll other dimmer devices",
+              "nl": "Helderheidsniveau: Basic Set wordt gebruikt om andere dimmers aan te sturen"
+            }
+          },
+          "3": {
+            "hint": {
+              "en": "ON/OFF: Binary Switch Set is usually used to controll other ON/OFF devices",
+              "nl": "AAN/UIT: Binary Switch Set wordt gebruikt om andere schakelaars aan te sturen"
+            }
+          }
+        }
+      },
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Button behaviour",
+            "nl": "Gedrag knoppen"
+          },
+          "collapsed": false,
+          "children": [
+            {
+              "id": "double_click",
+              "value": "1",
+              "label": {
+                "en": "Double click",
+                "nl": "Dubbel klik"
+              },
+              "hint": {
+                "en": "This parameter (5) defines the double click functionality.",
+                "nl": "Deze parameter (5) bepaalt de dubbel klik functionaliteit."
+              },
+              "zwave": {
+                "index": 5,
+                "size": 1
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Central Scene notification (Default)",
+                    "nl": "Central Scene notificatie (standaard)"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Dim to maximum brightness level",
+                    "nl": "Dim naar maximaal helderheidsniveau"
+                  }
+                }
+              ],
+              "type": "dropdown"
+            },
+            {
+              "id": "scene_activation",
+              "type": "checkbox",
+              "label": {
+                "en": "Scene activation",
+                "nl": "Scene activation"
+              },
+              "value": true,
+              "hint": {
+                "en": "This parameter (6) enables scene activation. Scene activation is required for using scene triggers. Enabling scene activation functionality may cause slight delay in response to external switches and sending associations.",
+                "nl": "Deze parameter (6) stelt de scene activation in. Scene activation moet aan staan om scene triggers te gebruiken. Scene activation aanzetten kan vertragingen veroorzaken met externe schakkelaars en bij het sturen van geassocieerde apparaten."
+              },
+              "zwave": {
+                "index": 6,
+                "size": 1
+              }
+            },
+            {
+              "id": "switch_on_level",
+              "type": "number",
+              "label": {
+                "en": "Switch ON level",
+                "nl": "Inschakel helderheidsniveau"
+              },
+              "value": 0,
+              "attr": {
+                "min": 0,
+                "max": 99
+              },
+              "hint": {
+                "en": "This parameter (7) determines the dimming level when restored from OFF state by push button. \nRange: 0: Restores last dim level (Default), 1 - 99 %",
+                "nl": "Deze parameter (7) bepaalt het helderheidsniveau dat hersteld wordt na een UIT toestand door op de drukkop te drukken. \nBereik: 0: Herstel laatste helderheidsniveau (Standaard), 1 - 99 %"
+              },
+              "zwave": {
+                "index": 7,
+                "size": 1
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Dimming",
+            "nl": "Dimmen"
+          },
+          "collapsed": true,
+          "children": [
+            {
+              "id": "minimum_dim_level",
+              "value": 10,
+              "label": {
+                "en": "Minimum brightness level",
+                "nl": "Minimale helderheidsniveau"
+              },
+              "hint": {
+                "en": "This parameter (2) determines the minimum brightness level. \nRange: 1 - 98 % \nDefault: 20 %",
+                "nl": "Deze parameter (2) bepaalt het laagste helderheidsniveau. \nBereik: 1 - 98 % \nStandaard: 20 %"
+              },
+              "zwave": {
+                "index": 2,
+                "size": 1
+              },
+              "attr": {
+                "min": 1,
+                "max": 98
+              },
+              "type": "number"
+            },
+            {
+              "id": "maximum_dim_level",
+              "value": 85,
+              "label": {
+                "en": "Maximum brightness level",
+                "nl": "Maximaal helderheidsniveau"
+              },
+              "hint": {
+                "en": "This parameter (3) determines the highest brightness level. \nRange: 2 - 99 % \nDefault: 85 %",
+                "nl": "Deze parameter (3) bepaalt het hoogste helderheidsniveau. \nBereik: 2 - 99 % \nStandaard: 85 %"
+              },
+              "zwave": {
+                "index": 3,
+                "size": 1
+              },
+              "attr": {
+                "min": 2,
+                "max": 99
+              },
+              "type": "number"
+            },
+            {
+              "id": "dimming_step_rotate",
+              "type": "number",
+              "label": {
+                "en": "Dim step size",
+                "nl": "Stapgrootte dimmen"
+              },
+              "value": 15,
+              "attr": {
+                "min": 5,
+                "max": 255
+              },
+              "hint": {
+                "en": "This parameter (4) determines how many steps it should take to dim from minimum to maximum brightness level (One round = 20 steps). \nRange: 5 - 255 steps \nDefault: 15 (3/4 round)",
+                "nl": "Deze parameter (4) bepaalt hoeveel stappen nodig zijn om van minimum tot maximum helderheidsniveau te dimmen (een ronde = 20 stappen). \nBereik: 5 - 255 stappen \nStandaard: 15 (3/4 ronde)"
+              },
+              "zwave": {
+                "index": 4,
+                "size": 1,
+                "signed": false
+              }
+            },
+            {
+              "id": "dimming_duration",
+              "label": {
+                "en": "Dimming duration",
+                "nl": "Dim transitietijd"
+              },
+              "hint": {
+                "en": "This parameter (8) determines the default dim duration. \nRange: 1 - 127 seconds, 128 - 255: 1 - 127 minutes, 0: Instantly. \nDefault: 1 (second)",
+                "nl": "Deze parameter (8) bepaalt de standaard dim transitietijd \nBereik: 1 - 127 seconden, 128 - 255: 1 - 127 minuten, 0: Instantaan. \nStandaard: 1 (seconde)"
+              },
+              "zwave": {
+                "index": 8,
+                "size": 1,
+                "signed": false
+              },
+              "type": "number",
+              "value": 1,
+              "attr": {
+                "min": 0,
+                "max": 255
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Power",
+            "nl": "Stroom"
+          },
+          "collapsed": true,
+          "children": [
+            {
+              "id": "connected_Load",
+              "type": "number",
+              "zwave": {
+                "index": 1,
+                "size": 1,
+                "signed": false
+              },
+              "attr": {
+                "min": 0,
+                "max": 200
+              },
+              "value": 0,
+              "label": {
+                "en": "Connected Load",
+                "nl": "Aangesloten vermogen"
+              },
+              "hint": {
+                "en": "The Heatit Z-Dim has functionality to calculate power consumption. To enable this function, this parameter should have a value greater then 0. This is an estimated value, therefor power consumption accuracy depends on load estimation. \nZ-wave parameter 1 \nRange: 0 - 200 W \nDefault: 0 (diabled) W",
+                "nl": "De Heatit Z-Dim heeft een ingebouwde functionaliteit om het stroomverbruik te bepalen. Om deze functie in te schakelen, stel een waarde in groter dan 0. De nauwkeurigheid van het gerapporteerde stroomverbruik hangt af van deze instelling. \nZ-wave parameter 1 \nBereik: 0 - 200 W \nStandaard: 0 (uitgeschakeld) W"
+              }
+            },
+            {
+              "id": "meter_report_interval",
+              "zwave": {
+                "index": 9,
+                "size": 2
+              },
+              "value": 60,
+              "type": "number",
+              "attr": {
+                "min": 0,
+                "max": 32767
+              },
+              "label": {
+                "en": "Meter report interval (s)",
+                "nl": "Meter rapportage interval (s)"
+              },
+              "hint": {
+                "en": "Time interval between consecutive meter reports. \nZ-wave parameter 9 \nRange: 0, 30 - 32767 (s)\nDefault: 60 (s)",
+                "nl": "Tijdsinterval tussen opeenvolgende temperatuur rapportages. \nZ-wave parameter 9 \nBereik: 0, 30 - 32767 (s)\nStandaard: 60 (s)"
+              }
+            },
+            {
+              "id": "save_state",
+              "type": "number",
+              "value": 50,
+              "attr": {
+                "min": 1,
+                "max": 99
+              },
+              "label": {
+                "en": "Restore state after power failure",
+                "nl": "Herstel status na stroomonderbreking"
+              },
+              "hint": {
+                "en": "This parameter (10) determines whether after a power failure the device should be restored to the state it had before the power failure.",
+                "nl": "Deze parameter (10) bepaalt of het apparaat na een stroomonderbreking moet worden ingesteld zoals deze voor de stroomonderbreking stond ingesteld."
+              },
+              "zwave": {
+                "index": 10,
+                "size": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Z-Relay",
+      "name": {
+        "en": "Z-Relay"
+      },
+      "icon": "/drivers/Z-Relay/assets/icon-1.svg",
+      "images": {
+        "large": "/drivers/Z-Relay/assets/images/large.png",
+        "small": "/drivers/Z-Relay/assets/images/small.png"
+      },
+      "class": "socket",
+      "capabilities": [
+        "onoff",
+        "measure_temperature.input1",
+        "measure_temperature.input2",
+        "alarm_water",
+        "measure_power",
+        "meter_power",
+        "measure_voltage",
+        "measure_current"
+      ],
+      "capabilitiesOptions": {
+        "onoff": {
+          "title": {
+            "en": "Relay"
+          }
+        },
+        "measure_temperature.input1": {
+          "title": {
+            "en": "Sensor 1"
+          }
+        },
+        "measure_temperature.input2": {
+          "title": {
+            "en": "Sensor 2"
+          }
+        },
+        "measure_power": {
+          "approximated": true
+        }
+      },
+      "zwave": {
+        "manufacturerId": 411,
+        "productTypeId": 3,
+        "productId": 520,
+        "includeSecure": false,
+        "__comment": "Reverted back to non secure inclusion due to S2 security handshake issues",
+        "productDocumentation": "",
+        "pid": 3065,
+        "imageRemotePath": "",
+        "learnmode": {
+          "instruction": {
+            "en": "To include the Z-Relay to Homey: \n1. Activate the add mode on the device by clicking the inclusion button in the module. \nThe Adding Mode is indicated by status LED is blinking until a timeout occurs after 10 seconds or if the module has been added to the Z-Wave network."
+          }
+        },
+        "unlearnmode": {
+          "image": "/drivers/Z-Relay/assets/learnmode.svg",
+          "instruction": {
+            "en": "To remove the Z-Relay from Homey: \n1. Activate the add mode on the device by clicking the inclusion button in the module. \nThe Adding Mode is indicated by status LED is blinking until a timeout occurs after 10 seconds or if the module has been removed from the Z-Wave network."
+          }
+        },
+        "associationGroups": [
+          1
+        ],
+        "associationGroupsMultiChannel": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "Lifeline. Lifeline group for the entire module. Sends Basic Report On / Off when the relay is turned on or off. Sends Meter Report with energy data for the load connected to the relay output."
+            }
+          },
+          "2": {
+            "hint": {
+              "en": "Sends Sensor Multilevel Report for input 1.\nNodes in this group will receive information of the current temperature measured by the NTC connected to input 1."
+            }
+          },
+          "3": {
+            "hint": {
+              "en": "Sends Sensor Multilevel Report for input 2.\nNodes in this group will receive information of the current temperature measured by the NTC connected to input 2."
+            }
+          },
+          "4": {
+            "hint": {
+              "en": "Nodes in this group receives Basic Report On / Off when the flood sensor detects a flood. Normally used for visualization in the Controller."
+            }
+          },
+          "5": {
+            "hint": {
+              "en": "Nodes in this group receives Basic Set On / Off when the flood sensor detects a flood."
+            }
+          },
+          "6": {
+            "hint": {
+              "en": "Nodes in this group receives Notification Report when the flood sensor detects a flood. The notification events reported are: ”Water leak detected ”0x02 and ”ldle” 0x00."
+            }
+          }
+        }
+      },
+      "settings": [
+        {
+          "id": "LED_status",
+          "zwave": {
+            "index": 1,
+            "size": 1
+          },
+          "type": "dropdown",
+          "label": {
+            "en": "Status LED"
+          },
+          "value": "1",
+          "hint": {
+            "en": "Configuration of the status LED. \nZ-wave parameter 1 \ndefault: LED turned on",
+            "nl": "Instelling van de status LED. \nZ-wave parameter 1 \nstandaard: LED ingeschakeld"
+          },
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "LED turned off.",
+                "nl": "LED uitgeschakeld"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "LED turned on (default)",
+                "nl": "LED ingeschakeld (standaard)"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "LED flashing at 1 second intervals (1 Hz).",
+                "nl": "LED knippert in 1 seconde interval (1 Hz)."
+              }
+            },
+            {
+              "id": "3",
+              "label": {
+                "en": "LED flashing at 1/2 second intervals (1⁄2 Hz).",
+                "nl": "LED knippert in 1/2 seconde interval (1⁄2 Hz)."
+              }
+            }
+          ]
+        },
+        {
+          "id": "LED_brightness",
+          "zwave": {
+            "index": 2,
+            "size": 1
+          },
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 100
+          },
+          "value": 50,
+          "label": {
+            "en": "LED brightness (%)",
+            "nl": "Helderheid LED (%)"
+          },
+          "hint": {
+            "en": "LED brightness. \nZ-wave parameter 2 \nRange: 0 - 100 (%)\nDefault: 50 (%)",
+            "nl": "Helderheid LED. \nZ-wave parameter 2 \nBereik: 0 - 100 (%)\nStandaard: 50 (%)"
+          }
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Input sensor options",
+            "nl": "Sensor instellingen"
+          },
+          "collapsed": true,
+          "children": [
+            {
+              "type": "group",
+              "label": {
+                "en": "Input 1 (Temperature sensor 1)",
+                "nl": "Ingang 1 (Temperatuursensor 1)"
+              },
+              "collapsed": true,
+              "children": [
+                {
+                  "id": "Sensor_type_input1",
+                  "zwave": {
+                    "index": 3,
+                    "size": 1
+                  },
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Sensor type",
+                    "nl": "Sensor type"
+                  },
+                  "value": "0",
+                  "hint": {
+                    "en": "Sensor type. \nZ-wave parameter 3 \ndefault: No sensor connected",
+                    "nl": "Sensor type. \nZ-wave parameter 3 \nstandaard: Geen sensor aangesloten"
+                  },
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "No sensor connected (default)",
+                        "nl": "Geen sensor aangesloten (standaard)"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "10K NTC connected",
+                        "nl": "10K NTC aangesloten"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "Sensor_calibration_input1",
+                  "zwave": {
+                    "index": 5,
+                    "size": 1
+                  },
+                  "type": "number",
+                  "attr": {
+                    "min": -40,
+                    "max": 40
+                  },
+                  "value": 0,
+                  "label": {
+                    "en": "Sensor calibration (°C)",
+                    "nl": "Sensor calibratie (°C)"
+                  },
+                  "hint": {
+                    "en": "Sensor temperature calibration. \nZ-wave parameter 5 \nRange: -40 - 40 (-4.0 - 4.0°C)\nDefault: 0",
+                    "nl": "Sensor temperatuur calibratie. \nZ-wave parameter 5 \nBereik: -40 - 40 (-4.0 - 4.0°C)\nStandaard: 0"
+                  }
+                },
+                {
+                  "id": "Temperature_report_interval_input1",
+                  "zwave": {
+                    "index": 7,
+                    "size": 2
+                  },
+                  "type": "number",
+                  "attr": {
+                    "min": 0,
+                    "max": 86400
+                  },
+                  "value": 60,
+                  "label": {
+                    "en": "Temperature report interval (s)",
+                    "nl": "Temperatuur rapportage interval (s)"
+                  },
+                  "hint": {
+                    "en": "Time interval between consecutive temperature reports. \nZ-wave parameter 7 \nRange: 0, 10 - 86400 (s)\nDefault: 60 (s)",
+                    "nl": "Tijdsinterval tussen opeenvolgende temperatuur rapportages. \nZ-wave parameter 7 \nBereik: 0, 10 - 86400 (s)\nStandaard: 60 (s)"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "Input 2 (Temperature sensor 2)",
+                "nl": "Ingang 2 (Temperatuursensor 2)"
+              },
+              "collapsed": true,
+              "children": [
+                {
+                  "id": "Sensor_type_input2",
+                  "zwave": {
+                    "index": 4,
+                    "size": 1
+                  },
+                  "type": "dropdown",
+                  "label": {
+                    "en": "Sensor type",
+                    "nl": "Sensor type"
+                  },
+                  "value": "0",
+                  "hint": {
+                    "en": "Sensor type. \nZ-wave parameter 3 \ndefault: No sensor connected",
+                    "nl": "Sensor type. \nZ-wave parameter 3 \nstandaard: Geen sensor aangesloten"
+                  },
+                  "values": [
+                    {
+                      "id": "0",
+                      "label": {
+                        "en": "No sensor connected (default)",
+                        "nl": "Geen sensor aangesloten (standaard)"
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "label": {
+                        "en": "10K NTC connected",
+                        "nl": "10K NTC aangesloten"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "Sensor_calibration_input2",
+                  "zwave": {
+                    "index": 6,
+                    "size": 1
+                  },
+                  "type": "number",
+                  "attr": {
+                    "min": -40,
+                    "max": 40
+                  },
+                  "value": 0,
+                  "label": {
+                    "en": "Sensor calibration (°C)",
+                    "nl": "Sensor calibratie (°C)"
+                  },
+                  "hint": {
+                    "en": "Sensor temperature calibration. \nZ-wave parameter 5 \nRange: -40 - 40 (-4.0 - 4.0°C)\nDefault: 0",
+                    "nl": "Sensor temperatuur calibratie. \nZ-wave parameter 5 \nBereik: -40 - 40 (-4.0 - 4.0°C)\nStandaard: 0"
+                  }
+                },
+                {
+                  "id": "Temperature_report_interval_input2",
+                  "zwave": {
+                    "index": 8,
+                    "size": 2
+                  },
+                  "type": "number",
+                  "attr": {
+                    "min": 0,
+                    "max": 86400
+                  },
+                  "value": 60,
+                  "label": {
+                    "en": "Temperature report interval (s)",
+                    "nl": "Temperatuur rapportage interval (s)"
+                  },
+                  "hint": {
+                    "en": "Time interval between consecutive temperature reports. \nZ-wave parameter 7 \nRange: 0, 10 - 86400 (s)\nDefault: 60 (s)",
+                    "nl": "Tijdsinterval tussen opeenvolgende temperatuur rapportages. \nZ-wave parameter 7 \nBereik: 0, 10 - 86400 (s)\nStandaard: 60 (s)"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "Input 3 (Flood sensor)",
+                "nl": "Ingang 3 (Lekkage sensor)"
+              },
+              "collapsed": true,
+              "children": [
+                {
+                  "id": "Report_interval_input3",
+                  "zwave": {
+                    "index": 9,
+                    "size": 2
+                  },
+                  "type": "number",
+                  "attr": {
+                    "min": 0,
+                    "max": 864
+                  },
+                  "value": 2,
+                  "label": {
+                    "en": "Notification report interval (s)",
+                    "nl": "Notificatie rapportage interval (s)"
+                  },
+                  "hint": {
+                    "en": "Time interval between consecutive alarm notification reports. \nZ-wave parameter 9 \nRange: 0, 10 - 8640 (s)\nDefault: 20 (s)",
+                    "nl": "Tijdsinterval tussen opeenvolgende alarm notificatie rapportages. \nZ-wave parameter 9 \nBereik: 0, 10 - 8640 (s)\nStandaard: 20 (s)"
+                  }
+                },
+                {
+                  "id": "Flood_steady_timer",
+                  "zwave": {
+                    "index": 11,
+                    "size": 1
+                  },
+                  "type": "number",
+                  "attr": {
+                    "min": 0,
+                    "max": 60
+                  },
+                  "value": 6,
+                  "label": {
+                    "en": "Flood sensor trigger threshold (s)",
+                    "nl": "Lekkage sensor trigger drempelwaarde (s)"
+                  },
+                  "hint": {
+                    "en": "Configures the time that the flood input (input 3) has to be steady before the state is accepted as a valid state. \nZ-wave parameter 11 \nRange: 0- 60 (s)\nDefault: 6 (s)",
+                    "nl": "Bepaald de tijdsduur waarin de lekkage sensor (ingang 3) getriggerd moet zijn voordat de toestand geaccepteerd wordt als valide toestand. \nZ-wave parameter 11 \nBereik: 0 - 60 (s)\nStandaard: 6 (s)"
+                  }
+                },
+                {
+                  "id": "Flood_detection_threshold",
+                  "zwave": {
+                    "index": 14,
+                    "size": 2
+                  },
+                  "type": "number",
+                  "attr": {
+                    "min": 0,
+                    "max": 4095
+                  },
+                  "value": 2048,
+                  "label": {
+                    "en": "Flood sensor detection threshold",
+                    "nl": "Lekkage sensor detection drempelwaarde"
+                  },
+                  "hint": {
+                    "en": "Configures the threshold for input 3 that will cause a flood to be detected. \nLow value means a low detection threshold, high value will cause the input to be more sensitive. \nZ-wave parameter 14 \nRange: 0- 4095\nDefault: 2048",
+                    "nl": "Bepaald de drempelwaarde waarbij de lekkage sensor (ingang 3) getriggerd wordt. \nLage waarde betekend een lage detectie drempel, hoge waarde zorgt voor een verhoogde gevoeligheid van de ingang. \nZ-wave parameter 14 \nBereik: 0 - 4095\nStandaard: 2048"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Relay",
+            "nl": "Uitgang"
+          },
+          "collapsed": true,
+          "children": [
+            {
+              "id": "Meter_report_interval_relay",
+              "zwave": {
+                "index": 10,
+                "size": 2
+              },
+              "type": "number",
+              "attr": {
+                "min": 0,
+                "max": 8640
+              },
+              "value": 900,
+              "label": {
+                "en": "Meter (kWh) report interval (s)",
+                "nl": "Meter (kWh) rapportage interval (s)"
+              },
+              "hint": {
+                "en": "Configures the time interval between when meter reports for reporting the energy (kWh) consumed by the load connected to the relay output. \nZ-wave parameter 10 \nRange: 0, 10 - 864 (s)\nDefault: 60 (s)",
+                "nl": "Bepaald de tijdsinterval tussen opeenvolgende meter rapportages voor de energie (kWh) verbruikt door de aangesloten apparaat. \nZ-wave parameter 10 \nBereik: 0, 10 - 864 (s)\nStandaard: 60 (s)"
+              }
+            },
+            {
+              "id": "Auto_relay_on",
+              "zwave": {
+                "index": 12,
+                "size": 1
+              },
+              "type": "dropdown",
+              "label": {
+                "en": "Auto relay on",
+                "nl": "Relay inschakelfunctie"
+              },
+              "value": "1",
+              "hint": {
+                "en": "Configures internal states that will cause the relay to be turned on. \nZ-wave parameter 12 \ndefault: The relay is turned on when a flood is detected.",
+                "nl": "Bepaald de interne toestand waarbij de relay ingeschakeld wordt. \nZ-wave parameter 12 \nstandaard: De uitgang wordt ingeschakeld wanneer een lekkage gedetecteerd wordt"
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Relay is not turned on automatically."
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "The relay is turned on when a flood is detected. (Default)"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "The relay is turned on when no flood is detected."
+                  }
+                }
+              ]
+            },
+            {
+              "id": "Auto_relay_off",
+              "zwave": {
+                "index": 13,
+                "size": 1
+              },
+              "type": "dropdown",
+              "label": {
+                "en": "Auto relay off",
+                "nl": "Relay uitschakelfunctie"
+              },
+              "value": "1",
+              "hint": {
+                "en": "Configures internal states that will cause the relay to be turned off. \nZ-wave parameter 13 \ndefault: The relay is turned off when a flood is detected.",
+                "nl": "Bepaald de interne toestand waarbij de relay uitgeschakeld wordt. \nZ-wave parameter 13 \nstandaard: De uitgang wordt uitgeschakeld wanneer een lekkage gedetecteerd wordt"
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Relay is not turned off automatically."
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "The relay is turned off when a flood is detected. (Default)"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "The relay is turned off when no flood is detected."
+                  }
+                }
+              ]
+            },
+            {
+              "id": "set_voltage",
+              "zwave": {
+                "index": 15,
+                "size": 1,
+                "signed": false
+              },
+              "type": "number",
+              "attr": {
+                "min": 0,
+                "max": 250
+              },
+              "value": 220,
+              "label": {
+                "en": "Set Voltage (V)",
+                "nl": "Stel Voltage (V) in"
+              },
+              "hint": {
+                "en": "Configures the value used for power calculation, as only the current for the load on the relay output is measured. \nZ-wave parameter 15 \nRange: 0 - 250 (V)\nDefault: 220 (V)",
+                "nl": "Bepaald de waarde gebruikt voor de berekening van het stroom verbruik, aangezien alleen de stroom van de load op de relay gemeten wordt. \nZ-wave parameter 15 \nBereik: 0 - 250 (V)\nStandaard: 220 (V)"
+              }
+            },
+            {
+              "id": "set_load_of_relay",
+              "zwave": {
+                "index": 18,
+                "size": 2
+              },
+              "type": "number",
+              "attr": {
+                "min": 0,
+                "max": 6000
+              },
+              "value": 0,
+              "label": {
+                "en": "Set load (W) of relay",
+                "nl": "Stel belasting (W) van relay in"
+              },
+              "hint": {
+                "en": "Configures a constant value that will be used in power metering when this value is different from 0. This value specifies the actual load in Watt used for power metering. \nZ-wave parameter 18 \nRange: 0 - 6000 (W)\nDefault: 0 (W)",
+                "nl": "Bepaald de constante waarde gebruikt voor de berekening van het stroom verbruik wanneer dit anders is dan 0. Deze waarde is de actuele belasting in Watt die gebruikt wordt voor stroom metingen. \nZ-wave parameter 18 \nBereik: 0 - 250 (V)\nStandaard: 220 (V)"
+              }
+            }
+          ]
         }
       ]
     },
     {
       "id": "Z-TRM2fx",
       "name": {
-        "en": "Heatit Z-TRM2fx thermostat"
+        "en": "Z-TRM2fx thermostat"
       },
       "icon": "/drivers/Z-TRM2fx/assets/icon.svg",
       "images": {
@@ -1781,83 +3518,41 @@
         },
         "measure_temperature.floor": {
           "title": "floor temperature"
+        },
+        "measure_power": {
+          "approximated": true
         }
-      },
-      "mobile": {
-        "components": [
-          {
-            "id": "icon",
-            "capabilities": []
-          },
-          {
-            "id": "sensor",
-            "capabilities": [
-              "measure_temperature",
-              "measure_temperature.external",
-              "measure_temperature.floor",
-              "thermofloor_onoff",
-              "measure_power",
-              "measure_voltage",
-              "meter_power"
-            ],
-            "options": {
-              "icons": {
-                "thermofloor_onoff": "/drivers/Z-TRM2fx/assets/thermofloor_onoff.svg"
-              },
-              "thermofloor_onoff": {
-                "noblink": false,
-                "greyout": true,
-                "label": {
-                  "true": {
-                    "en": "Active"
-                  },
-                  "false": {
-                    "en": "Idle"
-                  }
-                }
-              }
-            }
-          },
-          {
-            "id": "picker",
-            "capabilities": [
-              "thermofloor_mode"
-            ]
-          },
-          {
-            "id": "thermostat",
-            "capabilities": [
-              "target_temperature"
-            ]
-          }
-        ]
       },
       "zwave": {
         "manufacturerId": 411,
         "productTypeId": 3,
         "productId": 514,
+        "includeSecure": false,
+        "__comment": "Reverted back to non secure inclusion due to S2 security handshake issues",
         "productDocumentation": "https://products.z-wavealliance.org/ProductManual/File?folder=&filename=Manuals/3065/Manual_Heatit_Z-TRM2fx_ENG_3.1.pdf",
         "pid": 3065,
         "imageRemotePath": "https://products.z-wavealliance.org/ProductImages/Index?productName=ZC10-18116305",
         "learnmode": {
           "image": "/drivers/Z-TRM2fx/assets/learnmode.svg",
           "instruction": {
-            "en": "To include the thermostat to Homey: \n1. press the Center (confirm) button for 10 seconds. The display will show OFF. \n2. Press Right(down) button 5 times till you see Con in the display.\n3. Now start add a device to Homey.\n4. Start inclusion mode by pressing Center(confirm) button for approximately 2 seconds. The inclusion / exclusion icon will appear in the display.\n5. Confirmation will show Inc in the display. If inclusion fails, Err(error) will appear.",
-            "nl": "Om de thermostaat aan Homey toe te voegen: \n1. druk of de Center (confirm) knop voor 10 seconden. Het display toont OFF. \n2. Druk rechter (down) toets 5 keer tot Con op het display staat.\n3. Start voeg een apparaat toe aan Homey.\n4. Start inclusion modus door de Center(confirm) gedurende 2 seconden in te drukken. Het inclusion / exclusion icon wordt getoond in het display.\n5. Wanneer toevoegen geslaagd is, staat Inc op het display getoond en anders Err(error)."
+            "en": "To include the thermostat to Homey: \n1. press the Center (confirm) button for 10 seconds. The display will show OFF. \n2. Press Right(down) button 5 times till you see Con in the display.\n3. Now start add a device to Homey.\n4. Start inclusion mode by pressing Center(confirm) button for approximately 2 seconds. The inclusion / exclusion icon will appear in the display.\n5. Confirmation will show Inc in the display. \n If Err(error) is shown on the thermostat display, inclusion might still be successfull; check the functioning of the newly added device.",
+            "nl": "Om de thermostaat aan Homey toe te voegen: \n1. druk of de Center (confirm) knop voor 10 seconden. Het display toont OFF. \n2. Druk rechter (down) toets 5 keer tot Con op het display staat.\n3. Start voeg een apparaat toe aan Homey.\n4. Start inclusion modus door de Center(confirm) gedurende 2 seconden in te drukken. Het inclusion / exclusion icon wordt getoond in het display.\n5. Wanneer toevoegen geslaagd is, staat Inc op het display getoond. \n Wanneer Err(error) getoond wordt kan het toevoegen nog steeds succesvol zijn geweest; controleer het functioneren van de recent toegevoegde thermostaat."
           }
         },
         "unlearnmode": {
           "image": "/drivers/Z-TRM2fx/assets/learnmode.svg",
           "instruction": {
-            "en": "To remove the thermostat from Homey: \n1. press the Center (confirm) button for 10 seconds. The display will show OFF. \n2. Press Right(down) button 5 times till you see Con in the display.\n3. Now start to remove the device from Homey.\n4. Start exclusion mode by pressing Center(confirm) button for approximately 2 seconds. The inclusion / exclusion icon will appear in the display.\n5. Confirmation will show EcL in the display. If exclusion fails, Err(error) will appear.",
-            "nl": "Om de thermostaat van Homey te verwijderen: \n1. druk of de Center (confirm) knop voor 10 seconden. Het display toont OFF. \n2. Druk rechter (down) toets 5 keer tot Con op het display staat.\n3. Druk op het kruisje van de thermostaat.\n4. Start exclusion modus door de Center(confirm) gedurende 2 seconden in te drukken. Het inclusion / exclusion icon wordt getoond in het display.\n5. Wanneer het verwijderen geslaagd is, staat EcL op het display getoond en anders Err(error)."
+            "en": "To remove the thermostat from Homey: \n1. press the Center (confirm) button for 10 seconds. The display will show OFF. \n2. Press Right(down) button 5 times till you see Con in the display.\n3. Now start to remove the device from Homey.\n4. Start exclusion mode by pressing Center(confirm) button for approximately 2 seconds. The inclusion / exclusion icon will appear in the display.\n5. Confirmation will show EcL in the display. \n When Err(error) appears, check if the thermostat has been removed from Homey. \nIf so, reset the thermostat according to the instructions of the manual. \nOtherwise repeat the exclusion.",
+            "nl": "Om de thermostaat van Homey te verwijderen: \n1. druk of de Center (confirm) knop voor 10 seconden. Het display toont OFF. \n2. Druk rechter (down) toets 5 keer tot Con op het display staat.\n3. Druk op het kruisje van de thermostaat.\n4. Start exclusion modus door de Center(confirm) gedurende 2 seconden in te drukken. Het inclusion / exclusion icon wordt getoond in het display.\n5. Wanneer het verwijderen geslaagd is, staat EcL op het display getoond. Wanneer Err(error) getoond wordt, controleer of the thermostaat verwijdert is uit Homey. \nIndien dit het geval is, reset the thermostaat volgens de instructies. \nHerhaal anders het verwijderen."
           }
         },
         "associationGroups": [
           1,
-          2,
-          3,
           4
+        ],
+        "associationGroupsMultiChannel": [
+          2,
+          3
         ],
         "associationGroupsOptions": {
           "1": {
@@ -1875,7 +3570,7 @@
           "3": {
             "hint": {
               "en": "Send Multilevel Sensor Reports for the floor temperature sensor. \nDefault: 1 (Homey's ID), required to track the thermostat state (Active / Idle)",
-              "nl": "Stuurt Multilevel Sensor Reports voor de externe ruimte temperatuursensor.\nStandaard: 1 (Homey's ID), nodig om de toestand van de thermostat (Actief / Inactief) bij te houden"
+              "nl": "Stuurt Multilevel Sensor Reports voor de vloer temperatuursensor.\nStandaard: 1 (Homey's ID), nodig om de toestand van de thermostat (Actief / Inactief) bij te houden"
             }
           },
           "4": {
@@ -1884,7 +3579,19 @@
               "nl": "On/off  control: Deze groep schakelt externe verwarmings of koelings elementen. \nMaakt gebruik van het BASIC_SET command, values 0x00 (on) and 0xFF (on).\nStandaard: 1 (Homey's ID), nodig om de toestand van de thermostat (Actief / Inactief) bij te houden"
             }
           }
-        }
+        },
+        "defaultConfiguration": [
+          {
+            "id": 19,
+            "size": 2,
+            "value": 300
+          },
+          {
+            "id": 21,
+            "size": 2,
+            "value": 900
+          }
+        ]
       },
       "settings": [
         {
@@ -2138,12 +3845,12 @@
                 "index": 19,
                 "size": 2
               },
+              "value": 300,
               "type": "number",
               "attr": {
                 "min": 0,
                 "max": 32767
               },
-              "value": 60,
               "label": {
                 "en": "Temperature report interval (s)",
                 "nl": "Temperatuur rapportage interval (s)"
@@ -2180,12 +3887,12 @@
                 "index": 21,
                 "size": 2
               },
+              "value": 900,
               "type": "number",
               "attr": {
                 "min": 0,
                 "max": 32767
               },
-              "value": 60,
               "label": {
                 "en": "Meter report interval (s)",
                 "nl": "Meter rapportage interval (s)"
@@ -2226,6 +3933,35 @@
           },
           "collapsed": true,
           "children": [
+            {
+              "id": "Temperature_thermostat",
+              "type": "dropdown",
+              "label": {
+                "en": "Displayed temperature",
+                "nl": "Getoonde temperatuur"
+              },
+              "value": "floor",
+              "hint": {
+                "en": "Displayed temperature in Homey's thermostat \ndefault: Floor sensor",
+                "nl": "Getoonde termperatuur in Homey's thermostaat \nstandaard: Vloer sensor"
+              },
+              "values": [
+                {
+                  "id": "floor",
+                  "label": {
+                    "en": "Floor sensor (default)",
+                    "nl": "Vloer sensor (standaard)"
+                  }
+                },
+                {
+                  "id": "external",
+                  "label": {
+                    "en": "External sensor",
+                    "nl": "Externe sensor"
+                  }
+                }
+              ]
+            },
             {
               "id": "Sensor_mode",
               "zwave": {
@@ -2486,7 +4222,7 @@
     {
       "id": "Z-Water",
       "name": {
-        "en": "Heatit Z-Water regulator"
+        "en": "Z-Water regulator"
       },
       "icon": "/drivers/Z-Water/assets/icon-1.svg",
       "images": {
@@ -2528,35 +4264,12 @@
           }
         }
       },
-      "mobile": {
-        "components": [
-          {
-            "id": "icon",
-            "capabilities": [
-              "onoff"
-            ]
-          },
-          {
-            "id": "toggle",
-            "capabilities": [
-              "onoff"
-            ]
-          },
-          {
-            "id": "sensor",
-            "capabilities": [
-              "measure_temperature.input1",
-              "measure_temperature.input2",
-              "measure_temperature.input3",
-              "measure_temperature.input4"
-            ]
-          }
-        ]
-      },
       "zwave": {
         "manufacturerId": 411,
         "productTypeId": 3,
         "productId": 522,
+        "includeSecure": false,
+        "__comment": "Reverted back to non secure inclusion due to S2 security handshake issues",
         "productDocumentation": "",
         "pid": 3065,
         "imageRemotePath": "",
@@ -2582,7 +4295,9 @@
           7,
           8,
           9,
-          10,
+          10
+        ],
+        "associationGroupsMultiChannel": [
           11,
           12,
           13,
@@ -3172,9 +4887,189 @@
           ]
         }
       ]
+    },
+    {
+      "id": "Z-push-button-2",
+      "name": {
+        "en": "Z-Push Button 2"
+      },
+      "icon": "/drivers/Z-push-button-2/assets/icon.svg",
+      "images": {
+        "large": "/drivers/Z-push-button-2/assets/images/large.png",
+        "small": "/drivers/Z-push-button-2/assets/images/small.png"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_battery",
+        "alarm_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
+      "zwave": {
+        "manufacturerId": [
+          411,
+          816
+        ],
+        "productTypeId": 768,
+        "productId": 41735,
+        "productDocumentation": "",
+        "pid": 9999,
+        "imageRemotePath": "",
+        "learnmode": {
+          "image": "/drivers/Z-push-button-2/assets/learnmode.svg",
+          "instruction": {
+            "en": "To include the Z-Push Button to Homey: \nPress and hold down both buttons I and O of Group 2 (upper rockers) over 3 seconds. \nThe LED indicator will turn on and the remote will be set to adding mode. \nThe LED indicator blinking 6 times will indicate successful inclusion.",
+            "nl": "Om de Z-Push Button aan Homey toe te voegen: \n1. Hou beide knoppen I en O van Groep 2 (bovenste knoppen) ingedrukt voor 3 seconden. \nDe LED indicator gaat aan en de Z-push button is in toevoegmodus gezet. \nDe LED indicator knippert 6 keer wanneer het toevoegen succesvol is."
+          }
+        },
+        "unlearnmode": {
+          "image": "/drivers/Z-push-button-2/assets/learnmode.svg",
+          "instruction": {
+            "en": "To remove the Z-Push Button to Homey: \nPress and hold down both buttons I and O of Group 2 (upper rockers) over 3 seconds. \nThe LED indicator will turn on and the remote will be set to adding mode. \nThe LED indicator blinking 4 times will indicate successful inclusion.",
+            "nl": "Om de Z-Push Button van Homey te verwijderen: \n1. Hou beide knoppen I en O van Groep 2 (bovenste knoppen) ingedrukt voor 3 seconden. \nDe LED indicator gaat aan en de Z-push button is in toevoegmodus gezet. \nDe LED indicator knippert 4 keer wanneer het toevoegen succesvol is."
+          }
+        },
+        "associationGroups": [
+          1
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "Lifeline. Scene Notification and battery reporting is addressed to this group. Only one node can be assigned to this association group. \nDefault: 1 (Homey's ID)",
+              "nl": "Lifeline: Association Groep 1 wordt gebruikt om alle rapportages door te geven. Slechts een node kan toegevoegd worden aan deze associatie groep. \nStandaard: 1 (Homey's ID)"
+            }
+          },
+          "2": {
+            "hint": {
+              "en": "Group 2: Adding other Z-wave devices to this group will enable direct control from Z-push-button to that device:\nShort press: on/off (BASIC_SET) command \nLong press: increase / decrease dim-level command (SWITCH_MULTILEVEL).",
+              "nl": "Groep 2: Het toevoegen van andere Z-wave devices aan deze groep zal directe controle van de Z-push-button over deze devices toevoegen:\nKort ingedrukt: on/off (BASIC_SET) commando\nLang ingedrukt: verhoog / verlaag dim-level commando (SWITCH_MULTILEVEL)."
+            }
+          }
+        }
+      },
+      "settings": [
+        {
+          "id": "Wake-up_notification",
+          "value": "Wake up Z-push before save",
+          "type": "label",
+          "label": {
+            "en": "Note:"
+          },
+          "hint": {
+            "en": "Short press a button to wake-up the Z-push for 3 seconds, then press and hold I and O together over one second to wake-up the wall switch for 7 seconds.\nThen press save.",
+            "nl": "Druk kort op een knop om de Z-push te activeren, houdt daarna I en O tegelijkertijd ingedrukt om de Z-push voor 7 seconden wakker te houden.\nDruk daarna op save."
+          }
+        }
+      ]
+    },
+    {
+      "id": "Z-push-button-8",
+      "name": {
+        "en": "Z-Push Button 8"
+      },
+      "icon": "/drivers/Z-push-button-8/assets/icon.svg",
+      "images": {
+        "large": "/drivers/Z-push-button-8/assets/images/large.png",
+        "small": "/drivers/Z-push-button-8/assets/images/small.png"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_battery",
+        "alarm_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
+      "zwave": {
+        "manufacturerId": [
+          411,
+          816
+        ],
+        "productTypeId": 768,
+        "productId": 41733,
+        "productDocumentation": "",
+        "pid": 9999,
+        "imageRemotePath": "",
+        "learnmode": {
+          "image": "/drivers/Z-push-button-8/assets/learnmode.svg",
+          "instruction": {
+            "en": "To include the Z-Push Button to Homey: \nPress and hold down both buttons I and O of Group 2 (upper rockers) over 3 seconds. \nThe LED indicator will turn on and the remote will be set to adding mode. \nThe LED indicator blinking 6 times will indicate successful inclusion.",
+            "nl": "Om de Z-Push Button aan Homey toe te voegen: \n1. Hou beide knoppen I en O van Groep 2 (bovenste knoppen) ingedrukt voor 3 seconden. \nDe LED indicator gaat aan en de Z-push button is in toevoegmodus gezet. \nDe LED indicator knippert 6 keer wanneer het toevoegen succesvol is."
+          }
+        },
+        "unlearnmode": {
+          "image": "/drivers/Z-push-button-8/assets/learnmode.svg",
+          "instruction": {
+            "en": "To remove the Z-Push Button to Homey: \nPress and hold down both buttons I and O of Group 2 (upper rockers) over 3 seconds. \nThe LED indicator will turn on and the remote will be set to adding mode. \nThe LED indicator blinking 4 times will indicate successful inclusion.",
+            "nl": "Om de Z-Push Button van Homey te verwijderen: \n1. Hou beide knoppen I en O van Groep 2 (bovenste knoppen) ingedrukt voor 3 seconden. \nDe LED indicator gaat aan en de Z-push button is in toevoegmodus gezet. \nDe LED indicator knippert 4 keer wanneer het toevoegen succesvol is."
+          }
+        },
+        "associationGroups": [
+          1
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "Lifeline. Scene Notification and battery reporting is addressed to this group. Only one node can be assigned to this association group. \nDefault: 1 (Homey's ID)",
+              "nl": "Lifeline: Association Groep 1 wordt gebruikt om alle rapportages door te geven. Slechts een node kan toegevoegd worden aan deze associatie groep. \nStandaard: 1 (Homey's ID)"
+            }
+          },
+          "2": {
+            "hint": {
+              "en": "Group 2 (upper rockers): Adding other Z-wave devices to this group will enable direct control from Z-push-button to that device:\nShort press: on/off (BASIC_SET) command \nLong press: increase / decrease dim-level command (SWITCH_MULTILEVEL).",
+              "nl": "Groep 2 (bovenste knoppen): Het toevoegen van andere Z-wave devices aan deze groep zal directe controle van de Z-push-button over deze devices toevoegen:\nKort ingedrukt: on/off (BASIC_SET) commando\nLang ingedrukt: verhoog / verlaag dim-level commando (SWITCH_MULTILEVEL)."
+            }
+          },
+          "3": {
+            "hint": {
+              "en": "Group 3: Adding other Z-wave devices to this group will enable direct control from Z-push-button to that device:\nShort press: on/off (BASIC_SET) command \nLong press: increase / decrease dim-level command (SWITCH_MULTILEVEL).",
+              "nl": "Groep 3: Het toevoegen van andere Z-wave devices aan deze groep zal directe controle van de Z-push-button over deze devices toevoegen:\nKort ingedrukt: on/off (BASIC_SET) commando\nLang ingedrukt: verhoog / verlaag dim-level commando (SWITCH_MULTILEVEL)."
+            }
+          },
+          "4": {
+            "hint": {
+              "en": "Group 4: Adding other Z-wave devices to this group will enable direct control from Z-push-button to that device:\nShort press: on/off (BASIC_SET) command \nLong press: increase / decrease dim-level command (SWITCH_MULTILEVEL).",
+              "nl": "Groep 4: Het toevoegen van andere Z-wave devices aan deze groep zal directe controle van de Z-push-button over deze devices toevoegen:\nKort ingedrukt: on/off (BASIC_SET) commando\nLang ingedrukt: verhoog / verlaag dim-level commando (SWITCH_MULTILEVEL)."
+            }
+          },
+          "5": {
+            "hint": {
+              "en": "Group 5 (bottom rockers): Adding other Z-wave devices to this group will enable direct control from Z-push-button to that device:\nShort press: on/off (BASIC_SET) command \nLong press: increase / decrease dim-level command (SWITCH_MULTILEVEL).",
+              "nl": "Groep 5 (onderste knoppen): Het toevoegen van andere Z-wave devices aan deze groep zal directe controle van de Z-push-button over deze devices toevoegen:\nKort ingedrukt: on/off (BASIC_SET) commando\nLang ingedrukt: verhoog / verlaag dim-level commando (SWITCH_MULTILEVEL)."
+            }
+          }
+        }
+      },
+      "settings": [
+        {
+          "id": "Wake-up_notification",
+          "value": "Wake up Z-push before save",
+          "type": "label",
+          "label": {
+            "en": "Note:"
+          },
+          "hint": {
+            "en": "Short press a button to wake-up the Z-push for 3 seconds, then press and hold I and O together over one second to wake-up the wall switch for 7 seconds.\nThen press save.",
+            "nl": "Druk kort op een knop om de Z-push te activeren, houdt daarna I en O tegelijkertijd ingedrukt om de Z-push voor 7 seconden wakker te houden.\nDruk daarna op save."
+          }
+        }
+      ]
     }
   ],
   "capabilities": {
+    "scene_notification_custom_capability": {
+      "type": "boolean",
+      "title": {
+        "en": "Scene notification capability"
+      },
+      "getable": false,
+      "setable": false
+    },
     "thermofloor_mode": {
       "type": "enum",
       "uiComponent": "picker",
@@ -3242,7 +5137,16 @@
         "nl": "Status van de thermostaat"
       },
       "getable": true,
-      "setable": false
+      "setable": false,
+      "insights": true,
+      "insightsTitleTrue": {
+        "en": "Heating / Cooling turned on",
+        "nl": "Verwarming / Koeling ingeschakeld"
+      },
+      "insightsTitleFalse": {
+        "en": "Heating / Cooling turned off",
+        "nl": "Verwarming / Koeling uitgeschakeld"
+      }
     }
   }
 }
